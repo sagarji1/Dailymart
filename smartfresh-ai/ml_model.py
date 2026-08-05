@@ -25,8 +25,11 @@ def train_model():
 
     return model, label_encoder
 
-# ✅ WasteGPT function using Hugging Face
+# Cache generator globally to avoid loading it on every function call
+_generator = None
+
 def get_ai_recommendation(product, temp, humidity, days_since_harvest, packaging):
+    global _generator
     prompt = f"""
     I am  WasteGPT, an AI assistant for reducing food waste in retail stores.
 
@@ -39,6 +42,7 @@ def get_ai_recommendation(product, temp, humidity, days_since_harvest, packaging
     Suggest 1-2 actions to reduce waste. Example actions: apply discount, move to fast-sell zone, donate to food bank.
     """
 
-    generator = pipeline("text2text-generation", model="google/flan-t5-small")  # Lightweight model
-    result = generator(prompt, max_length=100, do_sample=True)
+    if _generator is None:
+        _generator = pipeline("text2text-generation", model="google/flan-t5-small")  # Lightweight model
+    result = _generator(prompt, max_length=100, do_sample=True)
     return result[0]["generated_text"]

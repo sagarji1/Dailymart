@@ -13,7 +13,7 @@ const Cart = () => {
 
   return (
     <div className="p-6">
-      <SmartCart/>
+      <SmartCart userId="user123" />
       <h2 className="text-3xl font-bold mb-4">🛒 Your Cart</h2>
 
       {cartItems.length === 0 ? (

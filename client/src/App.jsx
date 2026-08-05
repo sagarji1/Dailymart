@@ -1,13 +1,13 @@
 // src/App.jsx
 import React from 'react';
-import { Router, Routes, Route } from 'react-router-dom';
-import LoginPage from './pages/LoginPage';
+import { Routes, Route } from 'react-router-dom';
+import LoginPage from './Pages/LoginPage';
 import Navbar from './components/Header/Navbar';
 import Footer from './components/Footer/Footer';
 import Home from './Pages/Home';
 import DealofDay from './Pages/DealofDay';
 import Cart from './Pages/cart';
-import AdminDasboard from '../src/admin/components/DashboardLayout'
+import AdminDasboard from './admin/components/DashboardLayout';
 
 function App() {
   return (

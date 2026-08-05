@@ -5,7 +5,7 @@ function SmartCart({ userId }) {
 
   useEffect(() => {
     const fetchHistory = async () => {
-      const res = await fetch(`http://localhost:8080/purchase/user123`);
+      const res = await fetch(`http://localhost:8080/purchase/${userId}`);
       const historyData = await res.json();
       const allItems = historyData.flatMap(p => p.products);
 

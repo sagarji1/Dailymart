@@ -4,7 +4,15 @@ function predictExpiryRisk(item) {
   const today = new Date();
   const expiry = new Date(item.ExpiryDate);
   const daysRemaining = Math.ceil((expiry - today) / (1000 * 60 * 60 * 24));
-  const daysToSell = item.StockQty / item.AvgDailySales;
+  
+  const avgSales = Number(item.AvgDailySales);
+  if (!avgSales || isNaN(avgSales) || avgSales <= 0) {
+    if (daysRemaining < 3) return "High";
+    if (daysRemaining < 7) return "Medium";
+    return "Low";
+  }
+
+  const daysToSell = item.StockQty / avgSales;
 
   if (daysRemaining < daysToSell) return "High";
   if (daysRemaining < daysToSell * 1.5) return "Medium";

@@ -12,9 +12,9 @@ const SmartFresh = () => {
   const handleSubmit = async () => {
     const res = await axios.post("http://localhost:5000/predict", {
       product,
-      temp,
-      humidity,
-      days_since_harvest: days,
+      temp: Number(temp),
+      humidity: Number(humidity),
+      days_since_harvest: Number(days),
       packaging,
     });
     setResult(res.data);
