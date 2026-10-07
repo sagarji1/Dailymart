@@ -8,22 +8,23 @@ import Home from './Pages/Home';
 import DealofDay from './Pages/DealofDay';
 import Cart from './Pages/cart';
 import AdminDasboard from './admin/components/DashboardLayout';
+import NotFoundPage from './Pages/NotFoundPage';
 
 function App() {
   return (
-    <div>
+    <div className="flex min-h-screen flex-col bg-white text-zinc-900 transition-colors duration-300 dark:bg-zinc-950 dark:text-zinc-50">
       <Navbar />
-        
-   
-      <Routes>
-        <Route path="/login" element={<LoginPage />} />
-        <Route path="/" element={<Home />} />
-        <Route path="/cart" element={<Cart />} />
-        <Route path="/Deals" element={<DealofDay />} />
-        <Route path="/admin" element={<AdminDasboard />} />
-      </Routes>
-
-    <Footer />
+      <main className="flex-grow">
+        <Routes>
+          <Route path="/login" element={<LoginPage />} />
+          <Route path="/" element={<Home />} />
+          <Route path="/cart" element={<Cart />} />
+          <Route path="/Deals" element={<DealofDay />} />
+          <Route path="/admin" element={<AdminDasboard />} />
+          <Route path="*" element={<NotFoundPage />} />
+        </Routes>
+      </main>
+      <Footer />
     </div>
   );
 }

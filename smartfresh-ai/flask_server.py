@@ -11,6 +11,11 @@ app = Flask(__name__)
 CORS(app)  # allow all origins
  # CORS for frontend
 
+# Health check Endpoint
+@app.route("/", methods=["GET"])
+def index():
+    return jsonify({"status": "Smartfresh AI Server is running smoothly!"})
+
 # 🧠 Prediction Endpoint
 @app.route("/predict", methods=["POST"])
 def predict():

@@ -1,4 +1,5 @@
-require('dotenv').config()
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
 const app = require('./app');
 const Database = require('./data-source');
 
@@ -14,6 +15,7 @@ const port = 8080;
         });
     }
     catch (err) {
-        console.error(err);
+        console.error('Failed to connect to MongoDB:', err.message);
+        process.exit(1);
     }
 })();

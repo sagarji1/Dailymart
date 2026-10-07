@@ -16,6 +16,8 @@ runInventoryUpdater();
 const inventoryRoutes = require("./src/routes/inventoryRoutes");
 const purchaseRoutes = require("./src/routes/purchase");  // ✅ Smart Cart route
 const smartCartRoutes = require("./src/routes/smartCartRoutes");
+const authRoutes = require("./src/routes/auth");
+app.use("/auth", authRoutes);
 app.use("/smart-cart", smartCartRoutes);
 
 // 🧠 Mount Routes

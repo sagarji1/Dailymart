@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { AI_API_URL } from '../config/api';
 
 const SmartFresh = () => {
   const [product, setProduct] = useState("Banana");
@@ -10,7 +11,7 @@ const SmartFresh = () => {
   const [result, setResult] = useState(null);
 
   const handleSubmit = async () => {
-    const res = await axios.post("http://localhost:5000/predict", {
+    const res = await axios.post(`${AI_API_URL}/predict`, {
       product,
       temp: Number(temp),
       humidity: Number(humidity),
